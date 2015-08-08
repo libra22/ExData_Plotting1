@@ -36,9 +36,6 @@ remove(datetimecombine,dfdate)
 
 ## plot line graph and export as png to file
 png("plot2.png",width=480,height=480)
-plot(as.numeric(datadate$Global_active_power),type="l",ylab="Global Active Power (kilowatts",xaxt="n",xlab="")
-
-##set x axis as day
-axis(1, at = c(1,length(datadate$Date)/2,length(datadate$Date)), labels = c("Thu", "Fri", "Sat"), las = 0)
+plot(newdatadate$Date_time,as.numeric(newdatadate$Global_active_power),type="l",ylab="Global Active Power (kilowatts)",xlab="")
 
 dev.off()
