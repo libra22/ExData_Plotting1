@@ -1,5 +1,3 @@
-setwd("C:/Users/BPM/Downloads/DataScience/Assignment/M04-A1")
-
 ## read data
 datafull <- read.table("household_power_consumption.txt",header=TRUE,sep=";", stringsAsFactors = FALSE) 
 
@@ -35,7 +33,16 @@ newdatadate <- cbind(dfdate,datadate)
 remove(datetimecombine,dfdate)
 
 ## plot line graph and export as png to file
-png("plot2.png",width=480,height=480)
-plot(newdatadate$Date_time,as.numeric(newdatadate$Global_active_power),type="l",ylab="Global Active Power (kilowatts)",xlab="")
+png("plot3.png",width=480,height=480)
+plot(newdatadate$Date_time,as.numeric(newdatadate$Sub_metering_1),type="l",col="black",ylab="Energy sub metering",xlab="")
+
+## add second line to same plot
+lines(newdatadate$Date_time,as.numeric(newdatadate$Sub_metering_2),type="l",col="red")
+
+## add third line to same plot
+lines(newdatadate$Date_time,as.numeric(newdatadate$Sub_metering_3),type="l",col="blue")
+
+## create legend. use column name to set legend labels
+legend("topright", lty=1, col = c("black","blue", "red"), legend = c(names(newdatadate[8]),names(newdatadate[9]),names(newdatadate[10])))
 
 dev.off()
